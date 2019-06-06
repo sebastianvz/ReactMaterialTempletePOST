@@ -12,9 +12,7 @@ const reducerPosts = (state = posts, action) => {
       };
     }
     case SHOW_POST: {
-      return {
-        posts: state.posts,
-      };
+      return action.payload.posts
     }
     default: {
       return state;

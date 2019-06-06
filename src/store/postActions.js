@@ -18,21 +18,17 @@ export const testPost = (posts) => {
 
 }
 
-
-export function showPosts() {
-    axios
-    .get("https://jsonplaceholder.typicode.com/posts")
-    .then(res => {
+export const showPosts = () => (dispatch) => {
+  axios.get("https://jsonplaceholder.typicode.com/posts")
+    .then((res) => {
       debugger;
       let posts = res.data;
       console.log(res.data);
-      testPost(posts);
+      dispatch(testPost(posts))
     })
-    .catch(function(error) {
-      debugger;
-      console.log(error);
-    });
+    .catch((err) => {
 
+    })
 }
 
 // export const showPosts = () => dispatch => {

@@ -6,12 +6,7 @@ import { showPosts } from "../store/postActions";
 import { connect } from 'react-redux'
 
 class Post extends React.PureComponent {
-  state = {
-    posts: []
-  };
-
   componentDidMount() {
-    debugger;
     this.props.showPosts();
   }
 
@@ -28,16 +23,15 @@ class Post extends React.PureComponent {
         >
           Post's
         </Typography>
-        <br />
-        <Grid container spacing={2} alignItems="flex-end">
-          {/* {
-            posts.map((post, idx) => (
+          <div>
+          {
+            posts && posts.map((post, idx) => (
             <Grid item key={idx}>
               <PostCard {...post} key={idx} />
             </Grid>
           ))
-          } */}
-        </Grid>
+          }
+          </div>
       </Grid>
     );
   }
@@ -52,5 +46,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   showPosts,
 };
+
+// const mapDispatchToProps = dispatch => {
+//   getPosts: dispatch(showPosts)
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
