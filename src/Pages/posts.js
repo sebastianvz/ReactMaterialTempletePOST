@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 class Post extends React.PureComponent {
 
   componentDidMount() {
-    debugger;
     this.props.showPosts();
   }
 
@@ -50,7 +49,7 @@ class Post extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    posts: state.PostReducerName,
+    posts: state.PostReducerName.ArrayPostsReducer,
     number : state.PostReducerName
   };
 };

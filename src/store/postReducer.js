@@ -3,29 +3,37 @@ import { SHOW_POST } from "./actionsTypes";
 import { INCREMENTPOST } from "./actionsTypes";
 
 //Array donde voy almacer todos los post que llegan del API.
-const ArrayPostsReducer = []
-const number =0;
+const initialStateReducerPost = {
+  ArrayPostsReducer: [],
+  number: 0
+};
 
-const reducerPosts = (state = ArrayPostsReducer, action) => {
-  debugger;
+const reducerPosts = (state = initialStateReducerPost, action) => {
   switch (action.type) {
     case ADD_POST: {
       state.ArrayPostsReducer.push(action.payload);
       return {
-        state
+        ...state
       };
     }
     case SHOW_POST: {
-      // return action.payload.posts
-      state.ArrayPostsReducer =action.payload.posts;
+      const {ArrayPostsReducer} = state;
+      const postArray = Object.keys(action.payload.posts).map(
+        i => action.payload.posts[i]
+      );
       return {
         ...state,
-        ArrayPostsReducer
+        ArrayPostsReducer: postArray
       };
     }
     case INCREMENTPOST: {
-      state.number = action.payload.number + 1;
-      return action.payload.number
+      const { number } = state;
+      console.log(number);
+      let newNumber = number + action.payload.number;
+      return {
+        ...state,
+        number: newNumber
+      };
     }
     default: {
       return state;

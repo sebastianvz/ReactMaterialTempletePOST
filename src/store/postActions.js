@@ -10,7 +10,6 @@ export function addPost(payload) {
 export const incrementNumber = ()=>
 {
   let algo = 1;
-  debugger;
   return {
     type: INCREMENTPOST,
     payload: {
@@ -21,7 +20,6 @@ export const incrementNumber = ()=>
 
 
 export const testPost = (data) => {
-  debugger;
   return {
     type: SHOW_POST,
     payload: {
@@ -32,10 +30,8 @@ export const testPost = (data) => {
 }
 
 export const showPosts = () => (dispatch) => {
-  debugger;
   axios.get("https://jsonplaceholder.typicode.com/posts")
     .then((res) => {
-      debugger;
       let data = res.data;
       console.log(res.data);
       dispatch(testPost(data))
