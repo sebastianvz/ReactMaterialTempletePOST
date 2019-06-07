@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import posts from "./postReducer";
+import PostReducerName from "./postReducer";
 
-export default combineReducers({ posts });
+export default combineReducers({ PostReducerName });

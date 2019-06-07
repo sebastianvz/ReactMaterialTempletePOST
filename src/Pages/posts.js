@@ -2,12 +2,20 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import PostCard from "../Components/PostCard";
-import { showPosts } from "../store/postActions";
-import { connect } from 'react-redux'
+import { showPosts, incrementNumber } from "../store/postActions";
+import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 class Post extends React.PureComponent {
+
   componentDidMount() {
+    debugger;
     this.props.showPosts();
+  }
+
+  clickHandler = () => {
+    console.log('IN');
+    this.props.incrementNumber();
   }
 
   render() {
@@ -23,15 +31,18 @@ class Post extends React.PureComponent {
         >
           Post's
         </Typography>
-          <div>
+        <Button variant="contained" color="secondary" onClick={this.clickHandler}>
+          Incrementar
+        </Button>
+        <div>
           {
             posts && posts.map((post, idx) => (
-            <Grid item key={idx}>
-              <PostCard {...post} key={idx} />
-            </Grid>
-          ))
+              <Grid item key={idx}>
+                <PostCard {...post} key={idx} />
+              </Grid>
+            ))
           }
-          </div>
+        </div>
       </Grid>
     );
   }
@@ -39,12 +50,14 @@ class Post extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    posts: state.posts
+    posts: state.PostReducerName,
+    number : state.PostReducerName
   };
 };
 
 const mapDispatchToProps = {
   showPosts,
+  incrementNumber
 };
 
 // const mapDispatchToProps = dispatch => {

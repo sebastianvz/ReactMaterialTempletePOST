@@ -1,30 +1,44 @@
 import { ADD_POST } from "./actionsTypes";
 import { SHOW_POST } from "./actionsTypes";
+import { INCREMENTPOST } from "./actionsTypes";
 import axios from "axios";
 
 export function addPost(payload) {
   return { type: ADD_POST, payload };
 }
 
+export const incrementNumber = ()=>
+{
+  let algo = 1;
+  debugger;
+  return {
+    type: INCREMENTPOST,
+    payload: {
+      number:algo
+    },
+  }
+}
 
-export const testPost = (posts) => {
+
+export const testPost = (data) => {
   debugger;
   return {
     type: SHOW_POST,
     payload: {
-      posts
+      posts:data
     },
   }
 
 }
 
 export const showPosts = () => (dispatch) => {
+  debugger;
   axios.get("https://jsonplaceholder.typicode.com/posts")
     .then((res) => {
       debugger;
-      let posts = res.data;
+      let data = res.data;
       console.log(res.data);
-      dispatch(testPost(posts))
+      dispatch(testPost(data))
     })
     .catch((err) => {
 
