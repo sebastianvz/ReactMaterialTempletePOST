@@ -1,3 +1,5 @@
+Meidum Link: https://medium.com/@devsebastianvz/redux-react-segundos-pasos-entendiendo-thunk-axios-devredux-70b96cb88ffe
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
